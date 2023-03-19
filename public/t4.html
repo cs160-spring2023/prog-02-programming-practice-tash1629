@@ -2,8 +2,6 @@
 
 <html>
 <head>
-	<title></title>
-
   <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
   <!-- let's include the css file for bootstrap, then our custom css -->
   <link rel="stylesheet" type="text/css" href="/vendors/bootstrap/css/bootstrap.css" />
@@ -19,15 +17,53 @@
           <a href="/" class="btn btn-light float-right">
               Back
           </a>
-      </div>
-  </div>
-  
-  <!-- Your weather forecast here! -->
+        </div>
+    </div>
+    <!-- Your weather forecast here! -->
+    <div class="curr-location"></div>
+    
+    <div class="location-data">
+      <table class="data-table">
+        <tr>
+          <th style="font-size:20px">Time</th>
+          <th style="font-size:20px">Weather</th>
+          <th style="font-size:20px">Temp in Kelvin</th>
+          <th style="font-size:20px">Wind Speed in m/s</th>
+        </tr>
+        
+      </table>
+
+    </div>
 
   <script type="text/javascript">
-	// your solution here
+    async function getData(){
+      let response = await fetch('http://api.openweathermap.org/data/2.5/forecast?lat=37.8715&lon=122.2730&appid=1d0d9c0fef6212aacb9a8be3fb0c7114');
+      
+      let data = await response.json();
+      return data;
+    }  
 
+    getData().then(data=> $(".curr-location").append("<h1>Current Location: "+data.city.name+", "+data.city.country+"</h1>"))
+     
+    async function displayInfo(){
 
-</script>
+      for (var i=0; i<9; i++){
+        
+        const result = await getData().then(data => data.list[i]);
+        $(".data-table").append("<tr>" + 
+          "<td>"+result.dt_txt +"</td>"+
+          "<td>"+result.weather[0].description +"</td>"+
+          "<td>"+result.main.temp +"</td>"+
+          "<td>"+result.wind.speed +"</td>"+
+          "</tr>"
+         );
+      }
+    }
+   
+    displayInfo();
+    
+    
+    
+  </script>
 </body>
 </html>

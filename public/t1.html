@@ -69,6 +69,95 @@
 
 <script type="text/javascript">
   // your solution here
+  // get all purple bubbles
+  var purpleBubble = document.getElementsByClassName("p2-circle bg-purple");
+  // console.log(purpleBubble);
+  // loop through the list of purpleBubbles
+  for (var i=0; i<purpleBubble.length; i++){
+    // add event listenor to all the purple bubbles
+    purpleBubble[i].addEventListener("click", onClickPurple);
+    //purpleBubble[i].addEventListener("click", onClickPurple);
+  }
+
+  function onClickPurple(){
+    $(purpleBubble).hide();
+    // // go through all purple bubbles and hide each of them  
+    // for (var i=0; i<purpleBubble.length; i++){
+    //   // hide each purple bubble
+    //   purpleBubble[i].style.display = "none";
+    //   console.log(purpleBubble[i]);
+    // }
+  }
+
+  // handle green bubbles
+  var greenBubble = document.getElementsByClassName("p2-circle bg-green");
+  var blueBubble = document.getElementsByClassName("p2-circle bg-blue");
+  // add eventListener
+  for (i=0; i<greenBubble.length;i++){
+    greenBubble[i].addEventListener("click", onClickGreen)
+  }
+  function onClickGreen(){ 
+    // for (i=0; i<greenBubble.length; i++){
+    //   // hide both green and blue bubbles
+    //   // greenBubble[i].style.visibility = "hidden";
+    //   // //greenBubble.hidden = true;
+    // }
+    $(greenBubble).hide();  
+    $(blueBubble).hide();
+    // for (i=0; i<blueBubble.length; i++){
+    //   // remove each blue bubble
+    //   $(blueBubble).hide();
+    //   //blueBubble[i].style.display = "none";
+    // }
+  }
+
+  // handle bordered orange bubbles
+  var orangeBBubble = document.getElementsByClassName("p2-circle bg-orange p2-border");
+  var orangeBubble = document.getElementsByClassName("p2-circle bg-orange");
+  // add eventListener
+  for (i=0; i<orangeBBubble.length;i++){
+    orangeBBubble[i].addEventListener("click", onClickOrange)
+  }
+  
+  function onClickOrange(){
+    // remove orange and orange bordered bubbles
+    $(orangeBBubble).hide();
+    $(orangeBubble).hide();
+    /*using style.display method*/
+    // for (i=0;i<orangeBBubble.length; i++){
+    //   orangeBBubble[i].style.display = "none";
+    // }
+    
+  }
+
+  // handle gradient bubbles
+  var gradientBubbles = document.getElementById("gradient-circle");
+  // use jQuery to add hovering
+  $(gradientBubbles).hover(gradientHoverIn, gradientHoverOut);
+  
+  function gradientHoverIn(){
+    $(gradientBubbles).hide();
+    //gradientBubbles.hidden = true;
+  }
+  function gradientHoverOut(){
+    //gradientBubbles.hidden = false;
+    $(gradientBubbles).show();
+  }
+
+  // handle reset button
+  var buttons = document.getElementsByClassName("btn btn-light float-right");
+  // go thru each button and add event listener
+  for (i=0;i<buttons.length;i++){
+    buttons[i].addEventListener("click", onClickButton);
+  }
+  function onClickButton(){
+    $(purpleBubble).show();
+    $(greenBubble).show();
+    $(blueBubble).show();
+    $(orangeBubble).show();
+    $(orangeBBubble).show();
+
+  }
 
 </script>
 </body>

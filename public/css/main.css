@@ -55,7 +55,12 @@
 .float-right {
 	float: right;
 }
-
+.full-screen-div{
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  overflow: auto;
+}
 
 /* GENERAL CLASS CSS */
 
@@ -138,6 +143,16 @@ table {
   background-color: #f1f1f1;
 }
 
+/*question 4*/
+.data-table td{
+  padding: 0 30px;
+}
+.data-table th{
+  padding: 0 30px;
+}
+.data-table th{
+  font-size: 15px;
+}
 /* LIST GROUP ITEM */
 
 .list-group-item:first-child {

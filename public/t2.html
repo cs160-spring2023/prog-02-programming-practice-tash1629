@@ -37,6 +37,7 @@
         <div class="shape-container">
           <!-- Have your circles dynamically appear here! -->
           <!-- Example circle: <div class="p2-circle bg-blue"></div> -->
+          
         </div>
       </div>
     </div>
@@ -44,9 +45,17 @@
 
 
 <script type="text/javascript">
-
   // your solution here
-
+  var execCreateBubble = setInterval(createBubble, 1000);
+  function createBubble(){
+    $(".shape-container").append("<div class='p2-circle bg-blue'></div>");
+  }
+  var buttons = document.getElementsByClassName("btn btn-light float-right");
+  for (var i=0;i<buttons.length;i++){
+    buttons[i].addEventListener("click", function(){
+      clearInterval(execCreateBubble);
+    })
+  } 
 </script>
 </body>
 </html>
